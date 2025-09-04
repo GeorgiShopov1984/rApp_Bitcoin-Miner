@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BitcoinMiner rApp</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
+      color: #f0f0f0;
+    }
+    header {
+      text-align: center;
+      padding: 2rem;
+      font-size: 2rem;
+      background-color: rgba(255, 215, 0, 0.1);
+      border-bottom: 1px solid gold;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 2rem;
+    }
+    .card {
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid #ffd700;
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    input, select, button {
+      padding: 0.6rem;
+      margin-top: 1rem;
+      width: 100%;
+      border-radius: 5px;
+      border: none;
+      font-family: 'Orbitron', sans-serif;
+    }
+    button {
+      background-color: gold;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .chart-placeholder {
+      height: 300px;
+      background: linear-gradient(to right, #444, #666);
+      border-radius: 10px;
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ccc;
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    BitcoinMiner rApp – Gold/BTC Rendite 2025–2040
+  </header>
+
+  <div class="container">
+    <div class="card">
+      <h2>💰 Kapitalbindung & Mining</h2>
+      <label for="amount">Betrag (min. 100 €/$/¥/£/¢):</label>
+      <input type="number" id="amount" placeholder="z. B. 500" />
+
+      <label for="currency">Währung:</label>
+      <select id="currency">
+        <option>€</option>
+        <option>$</option>
+        <option>¥</option>
+        <option>£</option>
+        <option>¢</option>
+      </select>
+
+      <button onclick="calculateYield()">Mining starten</button>
+
+      <div id="result" style="margin-top:1rem;"></div>
+    </div>
+
+    <div class="card">
+      <h2>📈 Gold/BTC Chart (2025–2040)</h2>
+      <div class="chart-placeholder">
+        Chart wird geladen...
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🔐 Wallet Integration</h2>
+      <p>Deine Rendite wird monatlich zu 50 % in BTC auf deine Wallet gesendet.</p>
+      <p><strong>Aktuelle Wallet:</strong> Pionex (wird ersetzt durch BTC-kompatible Wallet)</p>
+      <button onclick="connectWallet()">Wallet verbinden</button>
+    </div>
+  </div>
+
+  <script>
+    function calculateYield() {
+      const amount = parseFloat(document.getElementById('amount').value);
+      if (isNaN(amount) || amount < 100) {
+        document.getElementById('result').innerText = "Bitte mindestens 100 investieren.";
+        return;
+      }
+      const monthlyYield = (amount * 0.05) * 0.5;
+      document.getElementById('result').innerText =
+        `Du erhältst monatlich ca. ${monthlyYield.toFixed(2)} in BTC auf deine Wallet.`;
+    }
+
+    function connectWallet() {
+      alert("Wallet-Verbindung wird vorbereitet. BTC-kompatible Wallets folgen bald.");
+    }
+  </script>
+</body>
+</html>
